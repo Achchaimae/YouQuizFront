@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>YouQuizFront</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+
+<script>
+      const setup = () => {
+        return {
+            isSidebarOpen: false,
+            currentSidebarTab: null,
+            isSettingsPanelOpen: false,
+            isSubHeaderOpen: false,
+            watchScreen() {
+                if (window.innerWidth <= 1024) {
+                    this.isSidebarOpen = false
+                }
+            },
+        }
+    }
+</script>
