@@ -85,4 +85,21 @@ export class SubjectComponent {
     this.isShowUpdateForm = false;
     this.getData(this.page);  
     }
+    nextPage()
+    {
+      if(this.page+2<=this.totalPages)
+      {
+        this.page=++this.page
+        this.getData(this.page)
+      } 
+    }
+  
+    prevPage()
+    {
+      if(this.page-1>=0)
+      {
+        this.page = --this.page;
+        this.getData(this.page)
+      } 
+    }
 }

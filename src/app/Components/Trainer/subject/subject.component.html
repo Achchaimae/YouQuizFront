@@ -32,16 +32,37 @@
                         {{item.parentSubject?item.parentSubject.title:"don't have a parent"}}
                     </td>
                     <td class="px-6 py-4 flex gap-2">
-                        <button  class="font-medium text-blue-600 hover:underline"   (click)="showUpdateForm(item.id)">
+                        <button class="font-medium text-blue-600 hover:underline" (click)="showUpdateForm(item.id)">
                             Edit
                         </button>
-                        <button  (click)="delete(item.id)" class="font-medium text-red-600 hover:underline">
+                        <button (click)="delete(item.id)" class="font-medium text-red-600 hover:underline">
                             delete
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="p-2">
+    <div class="flex flex-col">
+        <span class="text-sm text-gray-700 dark:text-gray-400">
+            page <span class="font-semibold text-gray-900">{{ page+1 }}</span> / <span class="font-semibold text-gray-900 ">{{ totalPages }}</span>
+        </span>
+        <div class="inline-flex mt-2 space-x-2">
+          <button (click)="prevPage()" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gradient-to-br to-[#173753] from-[#5EEAD4]  rounded-sm hover:bg-indigo-500">
+              <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+              </svg>
+              Prev
+          </button>
+          <button (click)="nextPage()" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gradient-to-br to-[#173753] from-[#5EEAD4] rounded-lg rounded-sm hover:bg-indigo-500">
+              Next
+              <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+</div>
     </section>
 </div>
 <div *ngIf="isShowAddForm"
