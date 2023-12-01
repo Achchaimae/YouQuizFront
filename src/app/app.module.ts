@@ -22,6 +22,10 @@ import { AddLevelFormComponent } from './Components/Trainer/LevelManagement/add-
 import { UpdateLevelFormComponent } from './Components/Trainer/LevelManagement/update-level-form/update-level-form.component';
 import { AddSubjectFormComponent } from './Components/Trainer/SubjectManagement/add-subject-form/add-subject-form.component';
 import { UpdateSubjectFormComponent } from './Components/Trainer/SubjectManagement/update-subject-form/update-subject-form.component';
+import { UpdateAnswerFormComponent } from './Components/Trainer/AnswerManagement/update-answer-form/update-answer-form.component';
+import { AddAnswerFormComponent } from './Components/Trainer/AnswerManagement/add-answer-form/add-answer-form.component';
+import { UpdateMediaFormComponent } from './Components/Trainer/MediaManagement/update-media-form/update-media-form.component';
+import { AddMediaFormComponent } from './Components/Trainer/MediaManagement/add-media-form/add-media-form.component';
 
 
 @NgModule({
@@ -44,6 +48,10 @@ import { UpdateSubjectFormComponent } from './Components/Trainer/SubjectManageme
     UpdateLevelFormComponent,
     AddSubjectFormComponent,
     UpdateSubjectFormComponent,
+    UpdateAnswerFormComponent,
+    AddAnswerFormComponent,
+    UpdateMediaFormComponent,
+    AddMediaFormComponent,
   ],
   imports: [
     BrowserModule,

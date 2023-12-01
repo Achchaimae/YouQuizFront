@@ -9,19 +9,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent {
-  // random color generator
-  colors: string[] = ['#5EEAD4', '#173753', '#2892D7'];
   currentIndex = 0;
   isShowAddForm : boolean = false;
   isShowUpdateForm : boolean = false;
   selectedId: any;
-  getColor(): string {
-    const color = this.colors[this.currentIndex];
-    this.currentIndex = (this.currentIndex + 1) % this.colors.length;
-    return color;
-  }
-  //end of the function
 
+  
   constructor(public SubjectService: SubjectService) { }
   Subjects: Subject[] = [];
   page: number = 0;
