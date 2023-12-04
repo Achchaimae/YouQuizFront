@@ -1,0 +1,4 @@
+.selected {
+    transform: scale(1.2); /* Increase the size of the selected media item */
+    /* Add any other desired styles for the selected media item */
+  }

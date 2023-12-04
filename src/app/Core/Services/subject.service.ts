@@ -26,4 +26,7 @@ export class SubjectService {
   getSubject(id: any): Observable<any> {
     return this.http.get(this.url + '/subject/' + id);
   }
+  getSubjectByTitle(title :any) : Observable<any>{
+    return this.http.get(this.url + '/subject/title/' + title )
+  }
 }

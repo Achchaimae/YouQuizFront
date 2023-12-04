@@ -6,11 +6,11 @@ import { LoginComponent } from './Components/login/login.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { StudentDashboardComponent } from './Components/student-dashboard/student-dashboard.component';
-import { QuestionComponent } from './Components/Trainer/question/question.component';
-import { SubjectComponent } from './Components/Trainer/subject/subject.component';
-import { LevelComponent } from './Components/Trainer/level/level.component';
-import { AnswerComponent } from './Components/Trainer/answer/answer.component';
-import { MediaComponent } from './Components/Trainer/media/media.component';
+import { QuestionComponent } from './Components/Trainer/Questions/question/question.component';
+import { SubjectComponent } from './Components/Trainer/Subjects/subject/subject.component';
+import { LevelComponent } from './Components/Trainer/Levels/level/level.component';
+import { AnswerComponent } from './Components/Trainer/Answers/answer/answer.component';
+import { MediaComponent } from './Components/Trainer/Medias/media/media.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
