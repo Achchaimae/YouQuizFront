@@ -37,7 +37,7 @@ export class UpdateLevelFormComponent {
   
     this.level.getLevel(this.id).subscribe(
       (response: any) => {
-        this.data = response; // Assign the response to the data property
+        this.data = response; 
         console.log(response);
       }
     );

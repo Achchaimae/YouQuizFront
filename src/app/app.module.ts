@@ -30,6 +30,17 @@ import { AddQuestionFormComponent } from './Components/Trainer/Questions/Questio
 import { UpdateQuestionFormComponent } from './Components/Trainer/Questions/QuestionManagement/update-question-form/update-question-form.component';
 import { SwipperComponent } from './Components/Trainer/Questions/QuestionManagement/swipper/swipper.component';
 import { AnswersFromComponent } from './Components/Trainer/Questions/QuestionManagement/answers-from/answers-from.component';
+import { DashboardComponent } from './Components/SuperAdmin/dashboard/dashboard.component';
+import { SupAdminNavbarComponent } from './Components/SuperAdmin/sup-admin-navbar/sup-admin-navbar.component';
+import { TrainerAdminComponent } from './Components/SuperAdmin/trainers/trainer-admin/trainer-admin.component';
+import { StudentAdminComponent } from './Components/SuperAdmin/students/student-admin/student-admin.component';
+import { AddStudentComponent } from './Components/SuperAdmin/students/add-student/add-student.component';
+import { UpdateStudentComponent } from './Components/SuperAdmin/students/update-student/update-student.component';
+import { UpdateTrainerComponent } from './Components/SuperAdmin/trainers/update-trainer/update-trainer.component';
+import { AddTrainerComponent } from './Components/SuperAdmin/trainers/add-trainer/add-trainer.component';
+import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
+import { AddQuizFormComponent } from './Components/Trainer/quizzes/QuizManagement/add-quiz-form/add-quiz-form.component';
+import { UpdateQuizFormComponent } from './Components/Trainer/quizzes/QuizManagement/update-quiz-form/update-quiz-form.component';
 
 
 @NgModule({
@@ -60,6 +71,19 @@ import { AnswersFromComponent } from './Components/Trainer/Questions/QuestionMan
     UpdateQuestionFormComponent,
     SwipperComponent,
     AnswersFromComponent,
+    DashboardComponent,
+    SupAdminNavbarComponent,
+    TrainerAdminComponent,
+    StudentAdminComponent,
+    AddStudentComponent,
+    UpdateStudentComponent,
+    UpdateTrainerComponent,
+    AddTrainerComponent,
+    QuizComponent,
+    AddQuizFormComponent,
+    UpdateQuizFormComponent,
+    
+
    
   ],
   imports: [
