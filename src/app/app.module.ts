@@ -41,6 +41,7 @@ import { AddTrainerComponent } from './Components/SuperAdmin/trainers/add-traine
 import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
 import { AddQuizFormComponent } from './Components/Trainer/quizzes/QuizManagement/add-quiz-form/add-quiz-form.component';
 import { UpdateQuizFormComponent } from './Components/Trainer/quizzes/QuizManagement/update-quiz-form/update-quiz-form.component';
+import { QuestionsFormComponent } from './Components/Trainer/quizzes/QuizManagement/questions-form/questions-form.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { UpdateQuizFormComponent } from './Components/Trainer/quizzes/QuizManage
     QuizComponent,
     AddQuizFormComponent,
     UpdateQuizFormComponent,
+    QuestionsFormComponent,
     
 
    

@@ -18,14 +18,7 @@ export class AnswersFromComponent {
   page: number = 0;
   constructor (public AnswerService : AnswerService , public validationService : ValidationService ){}
 
-// getAnswers(page:number){
-//     this.AnswerService.getAnswers(page).subscribe(
-//       data => {
-//         this.Answers = data.content
-//         this.totalPages = data.totalPages
-//       }
-//     )
-//   }
+
 
 ngOnInit(){
   this.getAnswers()

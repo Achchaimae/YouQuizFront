@@ -13,6 +13,7 @@ import { AnswerComponent } from './Components/Trainer/Answers/answer/answer.comp
 import { MediaComponent } from './Components/Trainer/Medias/media/media.component';
 import { DashboardComponent } from './Components/SuperAdmin/dashboard/dashboard.component';
 import { StudentAdminComponent } from './Components/SuperAdmin/students/student-admin/student-admin.component';
+import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path : "answer", component : AnswerComponent },
   {path : "subject", component : SubjectComponent },
   {path : "media", component : MediaComponent },
+  {path : "quiz", component : QuizComponent },
   {path : "SpAdmin", component : DashboardComponent },
   {path : "SpStudent" , component : StudentAdminComponent},
   {path : '**' , component : NotFoundComponent}

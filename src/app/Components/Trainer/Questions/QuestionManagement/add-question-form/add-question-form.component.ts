@@ -36,16 +36,8 @@ export class AddQuestionFormComponent {
     level_id: 0,
     media_id: 0
   }
-  // data={
-  //   text: '',
-  //   type: '',
-  //   subject: '',
-  //   level: '',
-  //   media: '',
-  //   validations: ''
-  // }
+ 
   save(){
-    // console.log(this.questionReq)
     this.Question.addQuestion(this.questionReq).subscribe(
       res => console.log(res.id)
     );
