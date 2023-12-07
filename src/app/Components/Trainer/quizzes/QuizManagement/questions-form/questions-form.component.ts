@@ -35,13 +35,13 @@ export class QuestionsFormComponent {
   }
   tempQuiz:TempQuiz={
     id: 0,
-    duration: '',
+    duration: 0,
     quiz: null,
     question: null
   }
   temQuizReq : TempQuizReq={
     id: 0,
-    duration: '',
+    duration: 0,
     question_id: 0,
     quiz_id: this.quiz_id
   }

@@ -17,7 +17,8 @@ export class AddQuizFormComponent {
     comment: '',
     passScore: 0,
     trainer_id: 3,
-    duration: ''
+    duration: '',
+    tempQuizs_id: 0
   }
   // duration: string = '';
   invalidDuration: boolean = false;

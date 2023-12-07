@@ -17,13 +17,6 @@ export class AnswersFromComponent {
   validations: Validation[] = []; 
   page: number = 0;
   constructor (public AnswerService : AnswerService , public validationService : ValidationService ){}
-
-
-
-ngOnInit(){
-  this.getAnswers()
-  this.getValidations(this.page)
-}
 @Input() question_id:number =0;
   question:Question={
     id: 0,
@@ -55,6 +48,12 @@ ngOnInit(){
 
   answers:Answer[]=[]
 
+  ngOnInit(){
+    this.getAnswers()
+    this.getValidations(this.page)
+    this.validationReq.question_id = this.question_id;
+  }
+
   getAnswers()
   {
     this.AnswerService.getAnswers(0).subscribe(
@@ -79,6 +78,8 @@ ngOnInit(){
 
   save()
   {
+    console.log(this.question_id);
+    
     this.validationService.saveValidation(this.validationReq).subscribe(
       res=> {
         this.question.validations.push(res)

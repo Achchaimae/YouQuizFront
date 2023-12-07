@@ -26,4 +26,8 @@ export class QuizService {
   getQuiz(id: any): Observable<any> {
     return this.http.get(this.url + '/quiz/quiz/' + id);
   }
+ 
+  getQuizById(id: any): Observable<any> {
+    return this.http.get(this.url + '/quiz/find/' + id);
+  }
 }

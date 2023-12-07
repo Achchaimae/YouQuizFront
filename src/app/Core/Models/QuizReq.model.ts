@@ -7,4 +7,5 @@ export interface QuizReq {
     duration : String
     passScore : number 
     trainer_id : number
+    tempQuizs_id : number;
 }

@@ -14,6 +14,7 @@ import { MediaComponent } from './Components/Trainer/Medias/media/media.componen
 import { DashboardComponent } from './Components/SuperAdmin/dashboard/dashboard.component';
 import { StudentAdminComponent } from './Components/SuperAdmin/students/student-admin/student-admin.component';
 import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
+import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path : "quiz", component : QuizComponent },
   {path : "SpAdmin", component : DashboardComponent },
   {path : "SpStudent" , component : StudentAdminComponent},
+  {path : "PassQuiz" , component : PassQuizComponent},
+
   {path : '**' , component : NotFoundComponent}
   
 ];

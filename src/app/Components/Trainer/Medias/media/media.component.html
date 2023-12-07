@@ -29,7 +29,6 @@
                         {{item.name}}
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        <!-- <img src="{{item.link}}" alt="" class="w-32">  -->
                         <div class="w-[100px]">
                             <div *ngIf="item.type === 'Video'">
                                 <video [src]="item.link" controls></video>

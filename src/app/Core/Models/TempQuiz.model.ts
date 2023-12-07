@@ -1,9 +1,10 @@
+import { Question } from "./Question.model";
 import { QuestionReq } from "./QuestionReq.model";
 import { QuizReq } from "./QuizReq.model";
 
 export interface TempQuiz {
     id: number;
-    duration : string ;
+    duration : number ;
     quiz : QuizReq | null ;
-    question : QuestionReq | null;
+    question : Question | null;
   }
