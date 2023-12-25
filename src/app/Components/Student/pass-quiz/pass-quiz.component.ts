@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { AssignQuiz } from 'src/app/Core/Models/AssignQuiz.model';
 import { Question } from 'src/app/Core/Models/Question.model';
 import { Quiz } from 'src/app/Core/Models/Quiz.model';
+import { StudentAnswerReq } from 'src/app/Core/Models/StudentAnswerReq.model';
 import { AssignQuizService } from 'src/app/Core/Services/assign-quiz.service';
 import { QuizService } from 'src/app/Core/Services/quiz.service';
+import { StudentAnswerService } from 'src/app/Core/Services/student-answer.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pass-quiz',
@@ -34,16 +38,23 @@ export class PassQuizComponent {
   Tempduration!: number;
   restOftime:number=0;
   intervalID:any
-  constructor(public QuizService: QuizService) {
+  constructor(public QuizService: QuizService, 
+    private assignQuizService: AssignQuizService, 
+    private studentAnswerService: StudentAnswerService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
     this.score = 0;
   }
 
   ngOnInit(): void {
     this.getQuiz();
+    
   }
 
   getQuiz() {
-    this.QuizService.getQuizById(452).subscribe(
+    const quizId = this.route.snapshot.paramMap.get('id');
+    this.QuizService.getQuizById(quizId).subscribe(
       data => {
         this.Quiz = data;
         this.Question = this.Quiz.tempQuizs[this.index].question;
@@ -76,7 +87,6 @@ export class PassQuizComponent {
     if (this.Question && this.Question.validations) {
       for (const validation of this.Question.validations) {
         if (validation.correct) {
-          // Do something with the correct answer
         }
       }
     }
@@ -94,28 +104,40 @@ export class PassQuizComponent {
         this.score += selectedValidation.points;
         console.log('Selected Answer Point:', selectedValidation.points);
         console.log('Score: ' + this.score);
+  
+        const assignQuizId = 1; // Replace with the actual assignQuiz ID property
+        const validationId = selectedValidation.id;
+  
+        const studentAnswer: StudentAnswerReq = {
+          AssignQuiz_id: assignQuizId,
+          Validation_id: validationId
+        };
+  
+        // Save the selected answer
+        this.studentAnswerService.saveStudentAnswer(assignQuizId,validationId).subscribe(
+          response => {
+            // Handle the response if needed
+            console.log('Selected answer saved successfully');
+          },
+          error => {
+            // Handle the error if saving fails
+            console.error('Failed to save selected answer:', error);
+          }
+        );
       }
     }
   
+    // Proceed to the next question
     this.index += 1;
   
     if (this.index >= this.Quiz.tempQuizs.length) {
       // All questions have been answered
-      alert('Quiz completed!');
+      Swal.fire("Congrats! You Score is " + this.score);
       return;
     }
   
-    this.QuizService.getQuizById(452).subscribe(data => {
-      this.Quiz = data;
-      this.Question = this.Quiz.tempQuizs[this.index].question;
-      this.startTimer(this.Quiz.tempQuizs[this.index].duration);
-      this.Tempduration = this.Quiz.tempQuizs[this.index].duration;
-      console.log(this.Tempduration);
-    });
-  
-    this.calculateScore();
+    this.changeQuestion();
   }
-
   startTimer(time: number) {
     this.restOftime = time;
     this.intervalID = setInterval(() => {
@@ -136,8 +158,10 @@ export class PassQuizComponent {
     this.index += 1;
   
     if (this.index >= this.Quiz.tempQuizs.length) {
-      // All questions have been answered
-      alert('Quiz completed!');
+      // alert("You'r Quiz is over , Your Score is" + this.score)
+      this.router.navigate(['/']);
+      
+
       return;
     }
   

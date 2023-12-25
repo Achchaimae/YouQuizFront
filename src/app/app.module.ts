@@ -44,6 +44,7 @@ import { UpdateQuizFormComponent } from './Components/Trainer/quizzes/QuizManage
 import { QuestionsFormComponent } from './Components/Trainer/quizzes/QuizManagement/questions-form/questions-form.component';
 import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
 import { StudentNavbarComponent } from './Components/Student/student-navbar/student-navbar.component';
+import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { StudentNavbarComponent } from './Components/Student/student-navbar/stud
     QuestionsFormComponent,
     PassQuizComponent,
     StudentNavbarComponent,
+    MyQuizzesComponent,
     
 
    

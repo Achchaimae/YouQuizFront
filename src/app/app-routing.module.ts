@@ -15,6 +15,7 @@ import { DashboardComponent } from './Components/SuperAdmin/dashboard/dashboard.
 import { StudentAdminComponent } from './Components/SuperAdmin/students/student-admin/student-admin.component';
 import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
 import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
+import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path : "quiz", component : QuizComponent },
   {path : "SpAdmin", component : DashboardComponent },
   {path : "SpStudent" , component : StudentAdminComponent},
-  {path : "PassQuiz" , component : PassQuizComponent},
+  {path : "passQuiz/:id" , component : PassQuizComponent},
+  {path: "MyQuizzes",component: MyQuizzesComponent},
 
   {path : '**' , component : NotFoundComponent}
   

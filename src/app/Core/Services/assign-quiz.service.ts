@@ -8,9 +8,13 @@ import { Observable } from 'rxjs';
 export class AssignQuizService {
 
   constructor(private http: HttpClient) {} 
-    private url ='http://localhost:8080'
+    private url ='http://localhost:8080/assignQuizz'
 
   getAssigns(): Observable<any>{
-    return this.http.get(this.url+ '/assignQuizz');
+    return this.http.get(this.url);
   }
+  getAssigned(id:any) : Observable<any>{
+    return this.http.get(this.url +'/student/'+ id);
+  }
+  
 }
