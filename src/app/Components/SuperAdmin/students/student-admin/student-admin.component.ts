@@ -16,16 +16,16 @@ export class StudentAdminComponent {
   isShowUpdateForm : boolean = false;
   selectedId: any;
   constructor(public student : StudentService){}
-  ngOnInit() : void {
-    this.getTrainer(this.page)
+  ngOnInit() : void { 
+    this.getStudent(this.page)
   }
 
 
-  getTrainer(page: number){
+  getStudent(page: number){
     this.student.getStudents(page).subscribe(
      
       
-      data => {
+      data => {  
         this.Students = data.content;
         this.totalPages = data.totalPages;  
       }
@@ -48,7 +48,7 @@ export class StudentAdminComponent {
           text: "Your file has been deleted.",
           icon: "success"
         });
-        this.getTrainer(this.page)
+        this.getStudent(this.page)
       }
       
     }
@@ -61,11 +61,11 @@ export class StudentAdminComponent {
   }
   closeUpdateForm() {
     this.isShowUpdateForm = false;
-    this.getTrainer(this.page);  
+    this.getStudent(this.page);  
     }
   closeAddForm()
   {
     this.isShowAddForm = false;
-    this.getTrainer(this.page);
+    this.getStudent(this.page);
   }
 }

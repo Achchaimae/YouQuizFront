@@ -16,6 +16,8 @@ import { StudentAdminComponent } from './Components/SuperAdmin/students/student-
 import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
 import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
 import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
+import { MessagingStudentComponent } from './Components/Student/messaging-student/messaging-student.component';
+import { AssignComponent } from './Components/Trainer/assign/assign.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
   {path : "SpStudent" , component : StudentAdminComponent},
   {path : "passQuiz/:id" , component : PassQuizComponent},
   {path: "MyQuizzes",component: MyQuizzesComponent},
-
+  {path : "MessagingStudent/:userId" , component : MessagingStudentComponent},
+  {path: "Assign" , component: AssignComponent},
   {path : '**' , component : NotFoundComponent}
   
 ];

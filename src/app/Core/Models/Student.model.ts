@@ -5,7 +5,7 @@ export interface Student {
     firstName: string
     lastName:string
     dateOfBirth:Date
-    adress : string
+    address : string
     email : EmailValidator
     registrationDate : Date
 }

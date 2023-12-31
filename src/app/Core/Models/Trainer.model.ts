@@ -5,7 +5,7 @@ export interface Trainer {
     firstName: string
     lastName:string
     dateOfBirth:Date
-    adress : string
+    address : string
     email : EmailValidator
     speciality : string
 }

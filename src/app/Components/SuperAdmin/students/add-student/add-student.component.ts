@@ -14,7 +14,7 @@ export class AddStudentComponent {
     firstName: '',
     lastName:'',
     dateOfBirth:'',
-    adress : '',
+    address : '',
     email : '',
     registrationDate : ''
     
@@ -26,7 +26,7 @@ export class AddStudentComponent {
       firstName: '',
       lastName:'',
       dateOfBirth:'',
-      adress : '',
+      address : '',
       email : '',
       registrationDate : ''
       

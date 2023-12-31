@@ -1,0 +1,30 @@
+<div class="bg-gray-100  flex">
+    <app-side-dashboard></app-side-dashboard>
+    <section class="my-24 mx-12 p-8 bg-white rounded-lg w-full">
+        <h1 class="font-bold text-2xl my-8">Assign Quiz</h1> 
+        <form  class="max-w-lg mx-auto" (submit)="saveAssignement()">
+            
+            <label for="quizSelect" class="block mb-2 text-sm font-medium text-gray-900">Select Quiz</label>
+            <select id="quizSelect"  name="quiz_id"   [(ngModel)]="assign.quiz_id"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <option *ngFor="let quiz of Quizzes" [value]="quiz.id">{{ quiz.comment }}</option>
+            </select>
+        
+            <label for="studentSelect" class="block mb-2 text-sm font-medium text-gray-900">Select Student</label>
+            <select id="studentSelect" name="student_id" [(ngModel)]="assign.student_id"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <option *ngFor="let student of Students" [value]="student.id">{{ student.firstName }}{{ student.lastName }}</option>
+            </select>
+            <div class="mb-5">
+                <label for="StartDate" class="block mb-2 text-sm font-medium text-gray-900 " >Quiz's Date</label>
+                <input [(ngModel)]="assign.startDate" name="startDate" type="date" id="StartDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+              </div>
+              <div class="mb-5">
+                <label for="EndDate" class="block mb-2 text-sm font-medium text-gray-900 ">Quiz's Date</label>
+                <input [(ngModel)]="assign.endDate" name="endDate" type="date" id="EndDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+              </div>
+              <button  type="submit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Assign Quiz</button>
+
+        </form>
+    </section>
+</div>

@@ -45,6 +45,10 @@ import { QuestionsFormComponent } from './Components/Trainer/quizzes/QuizManagem
 import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
 import { StudentNavbarComponent } from './Components/Student/student-navbar/student-navbar.component';
 import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
+import { DatePipe } from '@angular/common';
+import { MessagingStudentComponent } from './Components/Student/messaging-student/messaging-student.component';
+import { AssignComponent } from './Components/Trainer/assign/assign.component';
+
 
 
 @NgModule({
@@ -90,6 +94,8 @@ import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.c
     PassQuizComponent,
     StudentNavbarComponent,
     MyQuizzesComponent,
+    MessagingStudentComponent,
+    AssignComponent
     
 
    
@@ -101,7 +107,7 @@ import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.c
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

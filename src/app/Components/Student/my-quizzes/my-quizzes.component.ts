@@ -1,8 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssignQuiz } from 'src/app/Core/Models/AssignQuiz.model';
 import { AssignQuizService } from 'src/app/Core/Services/assign-quiz.service';
 import { NotificationService } from 'src/app/Core/Services/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-quizzes',
@@ -12,7 +14,8 @@ import { NotificationService } from 'src/app/Core/Services/notification.service'
 export class MyQuizzesComponent {
   constructor(private assignQuizSercice : AssignQuizService,
     private notificationService: NotificationService ,
-    private router: Router
+    private router: Router ,
+    private datePipe: DatePipe
      ){};
   
   ngOnInit(){
@@ -29,17 +32,15 @@ export class MyQuizzesComponent {
   
         if (hasNewAssignment) {
           this.notificationService.notifyNewAssignment();
-          console.log("Hello");
+         
         }
   
-        console.log(data);
       }
     );
   }
   
   
   hasNewAssignmentToday(assignments: AssignQuiz[]): boolean {
-    // Get the current date
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0); 
   
@@ -52,9 +53,31 @@ export class MyQuizzesComponent {
   }
   
   navigateToPassQuiz(quizId: any) {
-    // Navigate to the 'passQuiz' component with the quiz ID
-    this.router.navigate(['/passQuiz', quizId]);
-  } 
-
+    const selectedItem = this.Assignement.find((item) => item.quiz?.id === quizId);
+    
+    if(selectedItem && this.isDateBetween(selectedItem)) {
+      
+      this.router.navigate(['/passQuiz', quizId]);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Quiz Not Available",
+        text: "The current date is not valid for this quiz."
+      });
+    }
+      
+    
+  }
+ 
+  
+  isDateBetween(item: { startDate: Date; endDate: Date }): boolean {
+    const currentDate = new Date();
+    const formattedCurrentDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd') || '';
+  
+    const formattedStartDate = this.datePipe.transform(item.startDate, 'yyyy-MM-dd') || '';
+    const formattedEndDate = this.datePipe.transform(item.endDate, 'yyyy-MM-dd') || '';
+  
+    return formattedCurrentDate >= formattedStartDate && formattedCurrentDate <= formattedEndDate;
+  }
 
 }

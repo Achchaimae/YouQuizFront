@@ -37,35 +37,40 @@ export class PassQuizComponent {
   };
   Tempduration!: number;
   restOftime:number=0;
-  intervalID:any
+  intervalID:any;
+  quizId!:string;
   constructor(public QuizService: QuizService, 
-    private assignQuizService: AssignQuizService, 
-    private studentAnswerService: StudentAnswerService,
-    private router: Router,
-    private route: ActivatedRoute
-    ) {
+    private assignQuizService: AssignQuizService,
+     private studentAnswerService: StudentAnswerService,
+     private router: Router,
+     private route: ActivatedRoute) {
     this.score = 0;
   }
 
   ngOnInit(): void {
-    this.getQuiz();
-    
+    this.route.params.subscribe((params) => {
+      this.quizId = params['id'];
+      this.getQuiz(this.quizId);
+    });
+    // this.getQuiz();
   }
 
-  getQuiz() {
-    const quizId = this.route.snapshot.paramMap.get('id');
-    this.QuizService.getQuizById(quizId).subscribe(
-      data => {
-        this.Quiz = data;
-        this.Question = this.Quiz.tempQuizs[this.index].question;
-        this.startTimer(this.Quiz.tempQuizs[this.index].duration)
-        this.Tempduration = this.Quiz.tempQuizs[this.index].duration;
-        this.index = 0; // Reset the index
-         this.changeQuestion();
+    getQuiz(quizId:string) {
       
-      }
-    );
-  }
+      this.QuizService.getQuizById(quizId).subscribe(
+        
+        data => {
+          // console.log(data);
+          this.Quiz = data;
+          this.Question = this.Quiz.tempQuizs[this.index].question;
+          this.startTimer(this.Quiz.tempQuizs[this.index].duration)
+          this.Tempduration = this.Quiz.tempQuizs[this.index].duration;
+          this.index = 0; // Reset the index
+          this.changeQuestion();
+        
+        }
+      );
+    }
 
   changeBackgroundColor(index: number) {
     const answerOptions = document.getElementsByClassName('border-[#173753]');
@@ -87,6 +92,7 @@ export class PassQuizComponent {
     if (this.Question && this.Question.validations) {
       for (const validation of this.Question.validations) {
         if (validation.correct) {
+          // i need to add  something with the correct answer
         }
       }
     }
@@ -105,7 +111,7 @@ export class PassQuizComponent {
         console.log('Selected Answer Point:', selectedValidation.points);
         console.log('Score: ' + this.score);
   
-        const assignQuizId = 1; // Replace with the actual assignQuiz ID property
+        const assignQuizId = 1; 
         const validationId = selectedValidation.id;
   
         const studentAnswer: StudentAnswerReq = {

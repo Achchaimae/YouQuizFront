@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { QuizReq } from '../Models/QuizReq.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class QuizService {
   deleteQuiz(id:any): Observable<any>{
     return this.http.delete(this.url + '/quiz/delete/' + id)
   }
-  saveQuiz(data : any): Observable<any>{
+  saveQuiz(data : QuizReq): Observable<any>{
     return   this.http.post(this.url + '/quiz', data );
   }
   updateQuiz(id:any ,data:any) : Observable<any>{
