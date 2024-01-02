@@ -13,6 +13,11 @@ export class AnswerService {
   getAnswers(page:number) : Observable<any>{
     return this.http.get(this.url + '/Answer?size=8&page=' + page);
   }
+
+
+  getAllAnswers(page:number) : Observable<any>{
+    return this.http.get(this.url + '/Answer?page=' + page);
+  }
   deleteAnswer(id:any): Observable<any>{
     return this.http.delete(this.url + '/Answer/' + id)
   }

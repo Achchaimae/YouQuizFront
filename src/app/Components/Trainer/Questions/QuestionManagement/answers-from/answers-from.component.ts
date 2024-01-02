@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Answer } from 'src/app/Core/Models/Answer.model';
 import { Question } from 'src/app/Core/Models/Question.model';
 import { Validation } from 'src/app/Core/Models/Validation.model';
@@ -17,7 +17,14 @@ export class AnswersFromComponent {
   validations: Validation[] = []; 
   page: number = 0;
   constructor (public AnswerService : AnswerService , public validationService : ValidationService ){}
-@Input() question_id:number =0;
+// @Input() question_id:number =0;
+@Input() question_id: number = 0;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('question_id' in changes) {
+      this.validationReq.question_id = this.question_id;
+    }
+  }
   question:Question={
     id: 0,
     text: '',
@@ -56,7 +63,7 @@ export class AnswersFromComponent {
 
   getAnswers()
   {
-    this.AnswerService.getAnswers(0).subscribe(
+    this.AnswerService.getAllAnswers(0).subscribe(
       res => this.answers = res.content
     )
   }
@@ -78,10 +85,11 @@ export class AnswersFromComponent {
 
   save()
   {
-    console.log(this.question_id);
+    
     
     this.validationService.saveValidation(this.validationReq).subscribe(
       res=> {
+        console.log(res);
         this.question.validations.push(res)
         this.closeAddForm()
       }

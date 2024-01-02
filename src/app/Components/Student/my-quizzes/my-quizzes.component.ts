@@ -19,7 +19,7 @@ export class MyQuizzesComponent {
      ){};
   
   ngOnInit(){
-    this.getStudentAssignment(102);
+    this.getStudentAssignment(6);
     
   }
   Assignement : AssignQuiz[]= [];

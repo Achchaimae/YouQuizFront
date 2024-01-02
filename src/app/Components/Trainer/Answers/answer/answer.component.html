@@ -47,7 +47,7 @@
             class="font-semibold text-gray-900 ">{{ totalPages }}</span>
         </span>
         <div class="inline-flex mt-2 space-x-2">
-          <button
+          <button  (click)="prevPage()"
             class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gradient-to-br to-[#173753] from-[#5EEAD4]  rounded-sm hover:bg-indigo-500">
             <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="none" viewBox="0 0 14 10">
@@ -56,7 +56,7 @@
             </svg>
             Prev
           </button>
-          <button
+          <button (click)="nextPage()"
             class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gradient-to-br to-[#173753] from-[#5EEAD4] rounded-lg rounded-sm hover:bg-indigo-500">
             Next
             <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

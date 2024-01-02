@@ -36,22 +36,42 @@
                 {{score}}
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-4 mt-12 w-full">
-                <div class="border-[#173753] rounded-lg bg-white py-12 py-8" *ngFor="let validation of Question?.validations; let i = index" (click)="changeBackgroundColor(i)">
-                    {{ validation.answer?.text }}
+            
+            <div class="w-full flex justify-center items-center h-[40vh] overflow-y-scroll">
+              <div class=" p-4 grid grid-cols-2 gap-4 w-full">
+                  <div class="border-[#173753] rounded-lg bg-white " *ngFor="let answer of Question?.validations">
+                      <button *ngIf="validation_ids.includes(answer.id)" (click)="removeSelectedAnswer(answer.id)"
+                          class="py-12 py-8 w-full bg-[#5EEAD4] text-gray-100 rounded-md font-medium">{{
+                          answer.answer?.text }}</button>
+                      <button *ngIf="!validation_ids.includes(answer.id)" (click)="selectAnswer(answer.id)"
+                          class="py-12 py-8 w-full text-indigo-500 hover:bg-[#5EEAD4] hover:text-gray-100  rounded-md font-medium ">{{
+                          answer.answer?.text }}</button>
                   </div>
+              </div>
+          </div>
+        </div>
+        </div>
+        <div class=" m-center">
+          <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 > index" (click)="next()" >
+            <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
             </div>
-            <div class="mt-16 m-center">
-              <button class="b w-32 flex justify-center items-center" (click)="save()" >
+            <div class="text-center text-white font-semibold z-10 pointer-events-none" >
+              Next
+            </div>
+          </button>
+        </div>
+            <div class="m-center">
+              <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 == index" (click)="Done()" >
                 <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
                 </div>
                 <div class="text-center text-white font-semibold z-10 pointer-events-none" >
-                  Next
+                  Done
                 </div>
               </button>
             </div>
-          </div>
+          
         </div>
-      </div>
+        
+      
     </section>
   </div>

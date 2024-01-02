@@ -1,4 +1,4 @@
-<div class="flex space-x-4 w-full">
+<div class="flex space-x-4 w-full h-60">
     <section class="w-[40%]">
         <div class="flex max-md:flex-col md:space-x-4 w-full p-2">
             <div class="w-full shadow p-[2px]">
@@ -16,55 +16,31 @@
             </div>
         </div>
     </section>
-
-    <section class="w-[60%] ">
+    <section class="w-[60%]">
         <div class="flex max-md:flex-col md:space-x-4 w-full p-2">
-            <div class="w-full shadow p-[2px]">
-                <h3 class="text-lg font-medium p-2 border-b-2 border-indigo-600  text-[#5EEAD4]">Choose a Answer</h3>
-                <div class="mt-4">
-                   
-                    <div class="p-2">
-                        <div *ngFor="let answer of answers"
-                            class="p-2 border border-[#173753] rounded-md flex justify-between  m-2">
-                            <p class="font-medium text-gray-600 ">{{ answer.text }}</p>
-                            <button (click)="chooseAnswer(answer)"><svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 5l0 14" />
-                                    <path d="M5 12l14 0" />
-                                </svg></button>
-                        </div>
-                    </div>
+          <div class="w-full shadow p-[2px]">
+            <h3 class="text-lg font-medium p-2 border-b-2 border-indigo-600 text-[#5EEAD4]">Choose an Answer</h3>
+            <div class="mt-4 overflow-y-auto max-h-40"> <!-- Set a maximum height and enable vertical scrolling -->
+              <div class="p-2">
+                <div *ngFor="let answer of answers" class="p-2 border border-[#173753] rounded-md flex justify-between m-2">
+                  <p class="font-medium text-gray-600">{{ answer.text }}</p>
+                  <button (click)="chooseAnswer(answer)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24"
+                      height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 5l0 14" />
+                      <path d="M5 12l14 0" />
+                    </svg>
+                  </button>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
+      
 </div>
-<!-- <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
-    <a routerLink="/questions" *ngIf="question.validations.length != 0 "
-        class="text-white bg-indigo-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex space-x-2 "><span>Valid</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="20" 
-            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 12l14 0" />
-            <path d="M13 18l6 -6" />
-            <path d="M13 6l6 6" />
-        </svg></a>
-
-    <button *ngIf="question.validations.length == 0 " disabled
-        class="text-white bg-indigo-300  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex space-x-2 "><span>Valid</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="20" height="20"
-            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 12l14 0" />
-            <path d="M13 18l6 -6" />
-            <path d="M13 6l6 6" />
-        </svg></button>
-</div> -->
 <div *ngIf="isShowAddForm"
     class="backdrop-brightness-50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">

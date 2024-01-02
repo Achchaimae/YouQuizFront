@@ -12,7 +12,7 @@ export class QuestionService {
 
 
   getQuestions(page:number) : Observable<any>{
-    return this.http.get(this.url + '/question?size=8&page=' + page);
+    return this.http.get(this.url + '/question?size=4&page=' + page);
   }
   deleteQuestion(id:any): Observable<any>{
     return this.http.delete(this.url + '/question/delete/' + id)

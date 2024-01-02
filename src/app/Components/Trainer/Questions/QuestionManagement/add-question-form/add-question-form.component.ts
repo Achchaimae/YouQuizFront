@@ -40,18 +40,7 @@ export class AddQuestionFormComponent {
   save(){
     this.Question.addQuestion(this.questionReq).subscribe(
       res => this.questionReq.id = res.id
-    );
-    
-    // this.questionReq ={
-    //   id: 0,
-    //   text: '',
-    //   type: '',
-    //   subject_id: 0,
-    //   level_id: 0,
-    //   media_id: 0
-    // }
-    
-    
+    );    
     this.step+=1
   }
   getLevels(page:number){

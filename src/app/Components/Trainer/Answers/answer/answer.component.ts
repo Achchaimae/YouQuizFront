@@ -69,7 +69,22 @@ export class AnswerComponent {
     this.getData(this.page);  
     }
 
-    nextPage()
+
+nextPage()
+{
+  if(this.page+2<=this.totalPages)
   {
+    this.page=++this.page
+    this.getData(this.page)
+  } 
+}
+
+prevPage()
+{
+  if(this.page-1>=0)
+  {
+    this.page = --this.page;
+    this.getData(this.page)
+  } 
 }
 }

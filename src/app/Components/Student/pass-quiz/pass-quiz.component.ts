@@ -36,6 +36,7 @@ export class PassQuizComponent {
     validations: []
   };
   Tempduration!: number;
+  validation_ids:number[]=[]
   restOftime:number=0;
   intervalID:any;
   quizId!:string;
@@ -52,7 +53,7 @@ export class PassQuizComponent {
       this.quizId = params['id'];
       this.getQuiz(this.quizId);
     });
-    // this.getQuiz();
+    
   }
 
     getQuiz(quizId:string) {
@@ -60,7 +61,7 @@ export class PassQuizComponent {
       this.QuizService.getQuizById(quizId).subscribe(
         
         data => {
-          // console.log(data);
+          
           this.Quiz = data;
           this.Question = this.Quiz.tempQuizs[this.index].question;
           this.startTimer(this.Quiz.tempQuizs[this.index].duration)
@@ -80,6 +81,7 @@ export class PassQuizComponent {
         element.classList.add('bg-[#5EEAD4]');
         const selectedValidation = this.Question?.validations[i];
         if (selectedValidation) {
+
           console.log('Selected Answer Point:', selectedValidation.points);
         }
       } else {
@@ -91,59 +93,16 @@ export class PassQuizComponent {
   calculateScore() {
     if (this.Question && this.Question.validations) {
       for (const validation of this.Question.validations) {
-        if (validation.correct) {
-          // i need to add  something with the correct answer
+        if (validation.correct && this.validation_ids.includes(validation.id)) {
+          this.score += validation.points;
+          console.log('Selected Correct Answer Point:', validation.points);
         }
       }
+      console.log('Total Score: ' + this.score);
     }
   }
-
-
-  save() {
-    if (this.Question && this.Question.validations) {
-      const selectedValidation = this.Question.validations.find((validation, index) => {
-        const element = document.getElementsByClassName('border-[#173753]')[index] as HTMLElement;
-        return element.classList.contains('bg-[#5EEAD4]');
-      });
   
-      if (selectedValidation) {
-        this.score += selectedValidation.points;
-        console.log('Selected Answer Point:', selectedValidation.points);
-        console.log('Score: ' + this.score);
-  
-        const assignQuizId = 1; 
-        const validationId = selectedValidation.id;
-  
-        const studentAnswer: StudentAnswerReq = {
-          AssignQuiz_id: assignQuizId,
-          Validation_id: validationId
-        };
-  
-        // Save the selected answer
-        this.studentAnswerService.saveStudentAnswer(assignQuizId,validationId).subscribe(
-          response => {
-            // Handle the response if needed
-            console.log('Selected answer saved successfully');
-          },
-          error => {
-            // Handle the error if saving fails
-            console.error('Failed to save selected answer:', error);
-          }
-        );
-      }
-    }
-  
-    // Proceed to the next question
-    this.index += 1;
-  
-    if (this.index >= this.Quiz.tempQuizs.length) {
-      // All questions have been answered
-      Swal.fire("Congrats! You Score is " + this.score);
-      return;
-    }
-  
-    this.changeQuestion();
-  }
+ 
   startTimer(time: number) {
     this.restOftime = time;
     this.intervalID = setInterval(() => {
@@ -160,11 +119,45 @@ export class PassQuizComponent {
     this.Tempduration = this.Quiz.tempQuizs[this.index].duration;
     this.startTimer(this.Tempduration);
   }
+  next()
+  {
+    clearInterval(this.intervalID)
+    this.calculateScore();
+    this.index += 1;
+    this.Question = this.Quiz.tempQuizs[this.index].question
+    this.startTimer(this.Quiz.tempQuizs[this.index].duration)
+  }
+  
+  Done() {
+    this.validation_ids.forEach(id => {
+      this.studentAnswerService.saveStudentAnswer(5, id).subscribe();
+    });
+    
+  
+    this.validation_ids = [];
+  
+    if(this.score < this.Quiz.passScore){
+      Swal.fire("Good Luck next time , Your Score " + this.score);
+    }else{
+      Swal.fire("Congrats! You Score is " + this.score);
+    }
+      
+    
+  }
+  
+selectAnswer(id:number)
+  {
+    this.validation_ids.push(id);
+  }
+  removeSelectedAnswer(id:number)
+  {
+    this.validation_ids.splice(this.validation_ids.indexOf(id))
+  }
   goToNextQuestion() {
     this.index += 1;
   
     if (this.index >= this.Quiz.tempQuizs.length) {
-      // alert("You'r Quiz is over , Your Score is" + this.score)
+      
       this.router.navigate(['/']);
       
 
@@ -173,4 +166,5 @@ export class PassQuizComponent {
   
     this.changeQuestion();
   }
+
 }
