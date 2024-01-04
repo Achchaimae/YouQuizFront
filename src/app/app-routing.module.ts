@@ -16,8 +16,10 @@ import { StudentAdminComponent } from './Components/SuperAdmin/students/student-
 import { QuizComponent } from './Components/Trainer/quizzes/quiz/quiz.component';
 import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.component';
 import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
-import { MessagingStudentComponent } from './Components/Student/messaging-student/messaging-student.component';
+import { MessagingStudentComponent } from './Components/messaging-student/messaging-student.component';
 import { AssignComponent } from './Components/Trainer/assign/assign.component';
+import { ConversationComponent } from './Components/conversation/conversation.component';
+import { RoomComponent } from './Components/room/room.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -37,6 +39,8 @@ const routes: Routes = [
   {path: "MyQuizzes",component: MyQuizzesComponent},
   {path : "MessagingStudent/:userId" , component : MessagingStudentComponent},
   {path: "Assign" , component: AssignComponent},
+  {path: "Conversation" , component: ConversationComponent},
+  {path:'rooms/:id',component:RoomComponent},
   {path : '**' , component : NotFoundComponent}
   
 ];

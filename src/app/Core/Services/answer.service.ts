@@ -22,7 +22,7 @@ export class AnswerService {
     return this.http.delete(this.url + '/Answer/' + id)
   }
   saveAnswer(data : any): Observable<any>{
-    return   this.http.post(this.url + '/Answer', data );
+    return this.http.post(this.url + '/Answer', data );
   }
 
   updateAnswer(id: any, data: any): Observable<any> {

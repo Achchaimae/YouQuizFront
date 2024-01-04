@@ -15,7 +15,8 @@ export class MyQuizzesComponent {
   constructor(private assignQuizSercice : AssignQuizService,
     private notificationService: NotificationService ,
     private router: Router ,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    
      ){};
   
   ngOnInit(){

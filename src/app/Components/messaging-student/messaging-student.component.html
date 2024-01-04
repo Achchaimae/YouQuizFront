@@ -1,5 +1,5 @@
 <div>
-    <app-student-navbar></app-student-navbar>
+   
     <section>
         
         <div class="flex h-[90vh] antialiased text-gray-800">
@@ -32,7 +32,7 @@
                             <div class="leading-none ml-1 text-xs">Active</div>
                         </div>
                     </div>
-                    <div class="flex flex-col mt-8">
+                    <div class="flex flex-col mt-8"> 
                         <div class="flex flex-row items-center justify-between text-xs">
                             <span class="font-bold">Active Conversations</span>
                             <span class="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">4</span>
@@ -87,40 +87,11 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="flex flex-col flex-auto h-full p-6">
                     <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
                         <div class="flex flex-col h-full overflow-x-auto mb-4">
                             <div class="flex flex-col h-full">
-                                <!-- <div class="grid grid-cols-12 gap-y-2"[ngClass]="{'col-start-1 col-end-8 ':item.message_side==='receiver', 'col-start-6 col-end-13 ':item.message_side==='sender'}" *ngFor="let item of messageList" 
-                                >
-                                        <div class="col-start-1 col-end-8 p-3 rounded-lg">
-                                            <div class="flex flex-row items-center">
-                                                <div
-                                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                                    A
-                                                </div>
-                                                <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
-                                                    <div>{{item.message}}</div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                    
-                                   
-                                        <div class="col-start-6 col-end-13 p-3 rounded-lg">
-                                            <div class="flex items-center justify-start flex-row-reverse">
-                                                <div
-                                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                                    A
-                                                </div>
-                                                <div
-                                                    class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
-                                                    <div>{{item.message}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                   
-                                </div> -->
 
                                 <div class="grid grid-cols-12 gap-y-2" *ngFor="let item of messageList">
                                     <!-- Received Message -->
@@ -128,7 +99,7 @@
                                          class="col-start-6 col-end-13 p-3 rounded-lg">
                                       <div class="flex items-center justify-start flex-row-reverse">
                                         <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                          A <!-- Replace this with the actual user initials or image -->
+                                          A 
                                         </div>
                                         <div class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
                                           <div>{{ item.item.message }}</div>
@@ -141,7 +112,7 @@
                                       <div class="col-start-1 col-end-8 p-3 rounded-lg">
                                         <div class="flex flex-row items-center">
                                           <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                            A <!-- Replace this with the actual user initials or image -->
+                                            A 
                                           </div>
                                           <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
                                             <div>{{ item.item.message }}</div>

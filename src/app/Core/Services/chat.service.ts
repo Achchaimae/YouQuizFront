@@ -3,6 +3,7 @@ import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { ChatMessage } from '../Models/Chat-message.model';
 import { BehaviorSubject } from 'rxjs';
+import { ChatMessageReq } from '../Models/ChatMessageReq.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ChatService {
     this.stompClient = Stomp.over(socket)
   }
   
-  joinRoom(roomId :String){
+  joinRoom(roomId :number){
     this.stompClient.connect({},()=>{
       this.stompClient.subscribe(`/topic/${roomId}`, (messages: any)=> { 
         const messageContent = JSON.parse(messages.body);
@@ -35,9 +36,11 @@ export class ChatService {
     })
   }
 
-  sendMessage(roomId:String,ChatMessage: ChatMessage){
+  sendMessage(roomId:number,ChatMessage: ChatMessageReq){
     this.stompClient.send(`/app/chat/${roomId}`, {},JSON.stringify(ChatMessage))
   }
+  
+
 
 
   getMessageSubject(){

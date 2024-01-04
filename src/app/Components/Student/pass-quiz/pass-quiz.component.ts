@@ -48,13 +48,15 @@ export class PassQuizComponent {
     this.score = 0;
   }
 
+  
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.quizId = params['id'];
       this.getQuiz(this.quizId);
     });
-    
   }
+  
+  
 
     getQuiz(quizId:string) {
       
@@ -128,22 +130,34 @@ export class PassQuizComponent {
     this.startTimer(this.Quiz.tempQuizs[this.index].duration)
   }
   
+  // Done() {
+  //   this.validation_ids.forEach(id => {
+  //     this.studentAnswerService.saveStudentAnswer(5, id).subscribe();
+  //   });
+    
+  
+  //   this.validation_ids = [];
+  
+  //   if(this.score < this.Quiz.passScore){
+  //     Swal.fire("Good Luck next time , Your Score " + this.score);
+  //   }else{
+  //     Swal.fire("Congrats! You Score is " + this.score);
+  //   }
+  // }
   Done() {
     this.validation_ids.forEach(id => {
-      this.studentAnswerService.saveStudentAnswer(5, id).subscribe();
+      this.studentAnswerService.saveStudentAnswer(this.quizId, id).subscribe();
     });
-    
   
     this.validation_ids = [];
   
-    if(this.score < this.Quiz.passScore){
+    if (this.score < this.Quiz.passScore) {
       Swal.fire("Good Luck next time , Your Score " + this.score);
-    }else{
+    } else {
       Swal.fire("Congrats! You Score is " + this.score);
     }
-      
-    
   }
+  
   
 selectAnswer(id:number)
   {

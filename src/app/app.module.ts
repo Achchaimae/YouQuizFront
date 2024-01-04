@@ -46,8 +46,10 @@ import { PassQuizComponent } from './Components/Student/pass-quiz/pass-quiz.comp
 import { StudentNavbarComponent } from './Components/Student/student-navbar/student-navbar.component';
 import { MyQuizzesComponent } from './Components/Student/my-quizzes/my-quizzes.component';
 import { DatePipe } from '@angular/common';
-import { MessagingStudentComponent } from './Components/Student/messaging-student/messaging-student.component';
+import { MessagingStudentComponent } from './Components/messaging-student/messaging-student.component';
 import { AssignComponent } from './Components/Trainer/assign/assign.component';
+import { ConversationComponent } from './Components/conversation/conversation.component';
+import { RoomComponent } from './Components/room/room.component';
 
 
 
@@ -95,7 +97,9 @@ import { AssignComponent } from './Components/Trainer/assign/assign.component';
     StudentNavbarComponent,
     MyQuizzesComponent,
     MessagingStudentComponent,
-    AssignComponent
+    AssignComponent,
+    ConversationComponent,
+    RoomComponent
     
 
    
