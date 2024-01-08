@@ -130,35 +130,20 @@ export class PassQuizComponent {
     this.startTimer(this.Quiz.tempQuizs[this.index].duration)
   }
   
-  // Done() {
-  //   this.validation_ids.forEach(id => {
-  //     this.studentAnswerService.saveStudentAnswer(5, id).subscribe();
-  //   });
-    
-  
-  //   this.validation_ids = [];
-  
-  //   if(this.score < this.Quiz.passScore){
-  //     Swal.fire("Good Luck next time , Your Score " + this.score);
-  //   }else{
-  //     Swal.fire("Congrats! You Score is " + this.score);
-  //   }
-  // }
   Done() {
     this.validation_ids.forEach(id => {
-      this.studentAnswerService.saveStudentAnswer(this.quizId, id).subscribe();
+      this.studentAnswerService.saveStudentAnswer(5, id).subscribe();
     });
+    
   
     this.validation_ids = [];
   
-    if (this.score < this.Quiz.passScore) {
+    if(this.score < this.Quiz.passScore){
       Swal.fire("Good Luck next time , Your Score " + this.score);
-    } else {
+    }else{
       Swal.fire("Congrats! You Score is " + this.score);
     }
-  }
-  
-  
+  }  
 selectAnswer(id:number)
   {
     this.validation_ids.push(id);

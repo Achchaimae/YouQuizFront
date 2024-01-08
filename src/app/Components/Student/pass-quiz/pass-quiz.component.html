@@ -1,77 +1,77 @@
 
 <div>
-    <app-student-navbar></app-student-navbar>
-  
-    <section>
-      <h1 class="m-6 font-extrabold text-2xl">
-        Welcome Again
-        
-      </h1>
-  
-      <div class="bg-gray-100 p-8 text-center flex flex-col items-center justify-center">
-        <div>
-          <div>
-            <div class="flex items-center justify-between w-full">
-              <div class="rounded-full bg-[#173753] p-6 font-bold text-white">
-                {{ restOftime}}
-              </div>
-              <div class="flex flex-col items-center m-auto">
-                <div class="m-center bg-gray-50 w-[60vw] p-4 py-6 rounded-lg text-xl font-bold">{{ Question?.text }}</div>
-                <div>
-                    <div>
-                        <div class="w-96 mt-4">
-                          <div *ngIf="Question?.media?.type === 'Video'">
-                              <video [src]="Question?.media?.link" controls></video>
-                          </div>
-                          <div *ngIf="Question?.media?.type === 'Image' || Question?.media?.type === 'Gif'">
-                              <img [src]="Question?.media?.link" alt="">
-                          </div>
-                      </div>
-                    </div>
+  <app-student-navbar></app-student-navbar>
 
-                  
-                </div>
-              </div>
-              <div class="bg-[#39a0ed] py-4 p-2 rounded-lg text-white font-semibold">
-                {{score}}
-              </div>
-            </div>
-            
-            <div class="w-full flex justify-center items-center h-[40vh] overflow-y-scroll">
-              <div class=" p-4 grid grid-cols-2 gap-4 w-full">
-                  <div class="border-[#173753] rounded-lg bg-white " *ngFor="let answer of Question?.validations">
-                      <button *ngIf="validation_ids.includes(answer.id)" (click)="removeSelectedAnswer(answer.id)"
-                          class="py-12 py-8 w-full bg-[#5EEAD4] text-gray-100 rounded-md font-medium">{{
-                          answer.answer?.text }}</button>
-                      <button *ngIf="!validation_ids.includes(answer.id)" (click)="selectAnswer(answer.id)"
-                          class="py-12 py-8 w-full text-indigo-500 hover:bg-[#5EEAD4] hover:text-gray-100  rounded-md font-medium ">{{
-                          answer.answer?.text }}</button>
-                  </div>
-              </div>
-          </div>
-        </div>
-        </div>
-        <div class=" m-center">
-          <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 > index" (click)="next()" >
-            <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
-            </div>
-            <div class="text-center text-white font-semibold z-10 pointer-events-none" >
-              Next
-            </div>
-          </button>
-        </div>
-            <div class="m-center">
-              <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 == index" (click)="Done()" >
-                <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
-                </div>
-                <div class="text-center text-white font-semibold z-10 pointer-events-none" >
-                  Done
-                </div>
-              </button>
-            </div>
-          
-        </div>
-        
+  <section>
+    <h1 class="m-6 font-extrabold text-2xl">
+      Welcome Again
       
-    </section>
-  </div>
+    </h1>
+
+    <div class="bg-gray-100 p-8 text-center flex flex-col items-center justify-center">
+      <div>
+        <div>
+          <div class="flex items-center justify-between w-full">
+            <div class="rounded-full bg-[#173753] p-6 font-bold text-white">
+              {{ restOftime}}
+            </div>
+            <div class="flex flex-col items-center m-auto">
+              <div class="m-center bg-gray-50 w-[60vw] p-4 py-6 rounded-lg text-xl font-bold">{{ Question?.text }}</div>
+              <div>
+                  <div>
+                      <div class="w-96 mt-4">
+                        <div *ngIf="Question?.media?.type === 'Video'">
+                            <video [src]="Question?.media?.link" controls></video>
+                        </div>
+                        <div *ngIf="Question?.media?.type === 'Image' || Question?.media?.type === 'Gif'">
+                            <img [src]="Question?.media?.link" alt="">
+                        </div>
+                    </div>
+                  </div>
+
+                
+              </div>
+            </div>
+            <div class="bg-[#39a0ed] py-4 p-2 rounded-lg text-white font-semibold">
+              {{score}}
+            </div>
+          </div>
+          
+          <div class="w-full flex justify-center items-center h-[40vh] overflow-y-scroll">
+            <div class=" p-4 grid grid-cols-2 gap-4 w-full">
+                <div class="border-[#173753] rounded-lg bg-white " *ngFor="let answer of Question?.validations">
+                    <button *ngIf="validation_ids.includes(answer.id)" (click)="removeSelectedAnswer(answer.id)"
+                        class="py-12 py-8 w-full bg-[#5EEAD4] text-gray-100 rounded-md font-medium">{{
+                        answer.answer?.text }}</button>
+                    <button *ngIf="!validation_ids.includes(answer.id)" (click)="selectAnswer(answer.id)"
+                        class="py-12 py-8 w-full text-indigo-500 hover:bg-[#5EEAD4] hover:text-gray-100  rounded-md font-medium ">{{
+                        answer.answer?.text }}</button>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+      <div class=" m-center">
+        <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 > index" (click)="next()" >
+          <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
+          </div>
+          <div class="text-center text-white font-semibold z-10 pointer-events-none" >
+            Next
+          </div>
+        </button>
+      </div>
+          <div class="m-center">
+            <button class="b w-32 flex justify-center items-center" *ngIf="Quiz.tempQuizs.length -1 == index" (click)="Done()" >
+              <div class="i p-6 w-32 bg-gradient-to-br to-[#173753] from-[#5EEAD4] items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
+              </div>
+              <div class="text-center text-white font-semibold z-10 pointer-events-none" >
+                Done
+              </div>
+            </button>
+          </div>
+        
+      </div>
+      
+    
+  </section>
+</div>

@@ -13,7 +13,6 @@ import { QuestionComponent } from './Components/Trainer/Questions/question/quest
 import { LevelComponent } from './Components/Trainer/Levels/level/level.component';
 import { SubjectComponent } from './Components/Trainer/Subjects/subject/subject.component';
 import { MediaComponent } from './Components/Trainer/Medias/media/media.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,7 +49,11 @@ import { MessagingStudentComponent } from './Components/messaging-student/messag
 import { AssignComponent } from './Components/Trainer/assign/assign.component';
 import { ConversationComponent } from './Components/conversation/conversation.component';
 import { RoomComponent } from './Components/room/room.component';
+import { StoreModule } from '@ngrx/store';
 
+import { EffectsModule } from '@ngrx/effects';
+import { assignQuizReducer } from './Components/Student/MyquizState/assign-quiz.reducer';
+import { AssignQuizEffects } from './Components/Student/MyquizState/assign-quiz.effects';
 
 
 @NgModule({
@@ -110,6 +113,11 @@ import { RoomComponent } from './Components/room/room.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    // StoreModule.forRoot({}, {}),
+    // StoreModule.forRoot({ quiz: quizReducer }),
+    // EffectsModule.forRoot([])
+    StoreModule.forRoot({ assignQuiz: assignQuizReducer }),
+    EffectsModule.forRoot([AssignQuizEffects]),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
