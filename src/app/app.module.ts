@@ -54,6 +54,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { assignQuizReducer } from './Components/Student/MyquizState/assign-quiz.reducer';
 import { AssignQuizEffects } from './Components/Student/MyquizState/assign-quiz.effects';
+import { chatReducer } from './Components/ChatState/chat.reducer';
+import { ChatEffects } from './Components/ChatState/chat.effects';
 
 
 @NgModule({
@@ -113,11 +115,11 @@ import { AssignQuizEffects } from './Components/Student/MyquizState/assign-quiz.
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot({}, {}),
-    // StoreModule.forRoot({ quiz: quizReducer }),
-    // EffectsModule.forRoot([])
+    StoreModule.forRoot({}),
     StoreModule.forRoot({ assignQuiz: assignQuizReducer }),
     EffectsModule.forRoot([AssignQuizEffects]),
+     StoreModule.forRoot({ chat: chatReducer }),
+    EffectsModule.forRoot([ChatEffects]),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

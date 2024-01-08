@@ -19,18 +19,13 @@ export class MessagingStudentComponent {
   }
   ngOnInit(): void{
     this.userId =this.route.snapshot.params["userId"];
-    // this.chatService.joinRoom("ABC");
     this.listenerMessage();
   }
 
   sendMessage(){
     const chatMessage ={
- 
- 
       user : this.userId
     }as ChatMessage
-
-    // this.chatService.sendMessage("ABC", chatMessage);
     this.messageInput = '';
   }
 

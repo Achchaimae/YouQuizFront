@@ -1,11 +1,14 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChatMessage } from 'src/app/Core/Models/Chat-message.model';
 import { ChatMessageReq } from 'src/app/Core/Models/ChatMessageReq.model';
 import { ChatMessageResp } from 'src/app/Core/Models/ChatMessageResp.model';
 import { RoomResp } from 'src/app/Core/Models/RoomResp.model';
 import { ChatService } from 'src/app/Core/Services/chat.service';
 import { RoomService } from 'src/app/Core/Services/room.service';
+import * as ChatActions from '../ChatState/chat.actions';
+import { Store } from '@ngrx/store';
+import { selectChatMessages }from '../ChatState/chat.selector';
+
 
 @Component({
   selector: 'app-conversation',
@@ -28,6 +31,7 @@ export class ConversationComponent {
   
     @ViewChild('scrollContainer', { static: true })
     scrollContainer!: ElementRef;
+  // store: any;
   
     ngAfterViewInit() {
       this.scrollToBottom();
@@ -36,7 +40,7 @@ export class ConversationComponent {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
     }
       
-    constructor(private chatService :ChatService, private route :ActivatedRoute, private roomService : RoomService){
+    constructor(private chatService :ChatService, private route :ActivatedRoute, private roomService : RoomService,private store: Store){
     }
   
     ngOnInit(): void{
@@ -53,16 +57,15 @@ export class ConversationComponent {
       })
     }
     
-  
-    sendMessage(){
-      const chatMessage ={
-        content  : this.messageInput,
-        sender_id : this.userId,
-        room_id : 1
-      } as ChatMessageReq
-
-      
-      this.chatService.sendMessage(1, chatMessage);
+    sendMessage() {
+      const chatMessage = {
+        content: this.messageInput,
+        sender_id: this.userId,
+        room_id: 1,
+      } as ChatMessageReq;
+    
+      // Dispatch action to send the message
+      this.store.dispatch(ChatActions.sendMessage({ roomId: this.roomId, message: chatMessage }));
       this.messageInput = '';
     }
   
