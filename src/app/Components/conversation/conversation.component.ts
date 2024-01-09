@@ -31,14 +31,14 @@ export class ConversationComponent {
   
     @ViewChild('scrollContainer', { static: true })
     scrollContainer!: ElementRef;
-  // store: any;
+ 
   
-    ngAfterViewInit() {
-      this.scrollToBottom();
-    }  
-    private scrollToBottom() {
-      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
-    }
+    // ngAfterViewInit() {
+    //   this.scrollToBottom();
+    // }  
+    // private scrollToBottom() {
+    //   this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    // }
       
     constructor(private chatService :ChatService, private route :ActivatedRoute, private roomService : RoomService,private store: Store){
     }

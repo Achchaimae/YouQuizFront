@@ -24,7 +24,7 @@ export class MyQuizzesComponent {
      ){};
   
   ngOnInit(){
-    // this.getStudentAssignment(6);
+    //  this.getStudentAssignment(6);
     this.store.dispatch(assignQuizActions.loadAssignments());    
   }
   // Assignement : AssignQuiz[]= [];
