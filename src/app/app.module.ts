@@ -52,10 +52,11 @@ import { RoomComponent } from './Components/room/room.component';
 import { StoreModule } from '@ngrx/store';
 
 import { EffectsModule } from '@ngrx/effects';
-import { assignQuizReducer } from './Components/Student/MyquizState/assign-quiz.reducer';
-import { AssignQuizEffects } from './Components/Student/MyquizState/assign-quiz.effects';
-import { chatReducer } from './Components/ChatState/chat.reducer';
-import { ChatEffects } from './Components/ChatState/chat.effects';
+import { ChatEffects } from './State/ChatState/chat.effects';
+import { chatReducer } from './State/ChatState/chat.reducer';
+import { AssignQuizEffects } from './State/MyquizState/assign-quiz.effects';
+import { assignQuizReducer } from './State/MyquizState/assign-quiz.reducer';
+
 
 
 @NgModule({

@@ -5,9 +5,9 @@ import { AssignQuiz } from 'src/app/Core/Models/AssignQuiz.model';
 import { AssignQuizService } from 'src/app/Core/Services/assign-quiz.service';
 import { NotificationService } from 'src/app/Core/Services/notification.service';
 import Swal from 'sweetalert2';
-import { AssignQuizState, getAssignments } from '../MyquizState/assign-quiz.reducer';
+import { AssignQuizState, getAssignments } from '../../../State/MyquizState/assign-quiz.reducer';
 import { Store } from '@ngrx/store';
-import * as assignQuizActions from '../MyquizState/assign-quiz.actions'
+import * as assignQuizActions from '../../../State/MyquizState/assign-quiz.actions'
 
 @Component({
   selector: 'app-my-quizzes',
