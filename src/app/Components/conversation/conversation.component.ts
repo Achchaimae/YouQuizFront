@@ -5,9 +5,9 @@ import { ChatMessageResp } from 'src/app/Core/Models/ChatMessageResp.model';
 import { RoomResp } from 'src/app/Core/Models/RoomResp.model';
 import { ChatService } from 'src/app/Core/Services/chat.service';
 import { RoomService } from 'src/app/Core/Services/room.service';
-import * as ChatActions from '../ChatState/chat.actions';
+import * as ChatActions from '../../State/ChatState/chat.actions';
 import { Store } from '@ngrx/store';
-import { selectChatMessages }from '../ChatState/chat.selector';
+import { selectChatMessages }from '../../State/ChatState/chat.selector';
 
 
 @Component({
@@ -49,7 +49,22 @@ export class ConversationComponent {
       this.listenerMessage();
       this.chatService.joinRoom(1);
     }
-  
+    sortedMessages(): ChatMessageResp[] {
+   
+      return this.room.messages.slice().sort((b, a) => {
+        const timeA = a.time;
+        const timeB = b.time;
+    
+        // Convert the time strings to Date objects for comparison
+        const dateA = new Date(0, 0, 0, parseInt(timeA.split(':')[0]), parseInt(timeA.split(':')[1]));
+        const dateB = new Date(0, 0, 0, parseInt(timeB.split(':')[0]), parseInt(timeB.split(':')[1]));
+    
+        // Compare dates in descending order
+        return dateB.getTime() - dateA.getTime();
+      });
+    }
+    
+    
     getRoom()
     {
       this.roomService.getRoom(this.roomId).subscribe(res => {

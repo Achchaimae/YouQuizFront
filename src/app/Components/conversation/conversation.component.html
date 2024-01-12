@@ -1,10 +1,8 @@
-                
-               
-               <div *ngIf="room.id != 0" class="h-[85vh] overflow-y-auto" #scrollContainer>
+<div *ngIf="room.id != 0" class="h-[85vh] overflow-y-auto" #scrollContainer>
                 <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
                   <div class="flex flex-col h-full overflow-x-auto mb-4">
                     <div class="flex flex-col h-full">
-                      <div *ngFor="let item of room.messages; let i = index" class="grid grid-cols-12 gap-y-2">
+                      <div *ngFor="let item of sortedMessages(); let i = index" class="grid grid-cols-12 gap-y-2">
                         <!-- Received Message -->
                         <div *ngIf="item.sender.id == userId" class="col-start-6 col-end-13 p-3 rounded-lg">
                           <div class="flex items-center justify-start flex-row-reverse">
@@ -93,3 +91,4 @@
                         <span class="sr-only">Loading...</span>
                     </div>
             </div>
+        
