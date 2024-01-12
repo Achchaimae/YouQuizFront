@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RoomReq } from 'src/app/Core/Models/RoomReq.model';
 import { RoomService } from 'src/app/Core/Services/room.service';
 import { Store } from '@ngrx/store';
-import * as ChatActions from '../ChatState/chat.actions';
+import * as ChatActions from '../../State/ChatState/chat.actions';
 
 @Component({
   selector: 'app-room',
